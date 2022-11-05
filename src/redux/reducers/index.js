@@ -1,46 +1,23 @@
 import {
 	FILTER_BY_CAMERAS_CURIOSITY,
-	GET_CURIOSITY_PICS,
-	GET_OPPORTUNITY_PICS,
-	GET_SPIRIT_PICS,
+	GET_ROVERS_PICS,
 } from '../actions/actionTypes';
 
 const initialState = {
-	curiosityData: [],
-	filterCuriosityCameras: [],
-	opportunityPhotos: [],
-	spiritPhotos: [],
-	loading: true,
 	roverData: [],
+	filterCuriosityCameras: [],
+	loading: true,
 };
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GET_CURIOSITY_PICS: {
-			let curiosityPics = action.payload.photos;
+		case GET_ROVERS_PICS: {
+			let roverPics = action.payload.photos;
 			console.log(action.payload.photos);
 			return {
 				...state,
-				curiosityData: curiosityPics,
-				filterCuriosityCameras: curiosityPics,
-				loading: false,
-			};
-		}
-		case GET_OPPORTUNITY_PICS: {
-			let opportunityPics = [];
-			opportunityPics.push(action.payload.photos.map((e) => e.img_src));
-			return {
-				...state,
-				opportunityPhotos: opportunityPics,
-				loading: false,
-			};
-		}
-		case GET_SPIRIT_PICS: {
-			let spiritPics = [];
-			spiritPics.push(action.payload.photos.map((e) => e.img_src));
-			return {
-				...state,
-				spiritPhotos: spiritPics,
+				roverData: roverPics,
+				filterCuriosityCameras: roverPics,
 				loading: false,
 			};
 		}
@@ -73,7 +50,7 @@ const rootReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				curiosityData: filteredCameras,
+				roverData: filteredCameras,
 			};
 		}
 

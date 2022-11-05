@@ -2,10 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/Spinner/Spinner';
-import {
-	filterByCamerasCuriosity,
-	getCuriosityPics,
-} from '../../redux/actions';
+import { filterByCamerasCuriosity, getRoversPics } from '../../redux/actions';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useParams } from 'react-router-dom';
@@ -16,10 +13,10 @@ const Photos = (props) => {
 	const { rover } = useParams();
 
 	useEffect(() => {
-		dispatch(getCuriosityPics(new Date(), rover));
+		dispatch(getRoversPics(new Date(), rover));
 	}, [dispatch]);
 
-	const curiosityPics = useSelector((state) => state.curiosityData);
+	const roverPics = useSelector((state) => state.roverData);
 	const loading = useSelector((state) => state.loading);
 
 	const [date, setDate] = useState(new Date());
@@ -34,13 +31,12 @@ const Photos = (props) => {
 	function handleDate(date) {
 		console.log('handleDate', date);
 		setDate(date);
-		dispatch(getCuriosityPics(date, rover));
+		dispatch(getRoversPics(date, rover));
 	}
 
 	function handleSetDataType() {
 		setDateType(!dateType);
-		console.log(typeof curiosityPics[0]?.earth_date);
-		// setDate(curiosityPics[0]?.earth_date);
+		console.log(typeof roverPics[0]?.earth_date);
 		setDate('');
 	}
 
@@ -121,7 +117,7 @@ const Photos = (props) => {
 				{loading ? (
 					<Spinner />
 				) : (
-					curiosityPics?.map((e) => <img src={e.img_src} alt='' />)
+					roverPics?.map((e) => <img src={e.img_src} alt='' />)
 				)}
 			</div>
 		</div>
