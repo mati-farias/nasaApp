@@ -22,7 +22,10 @@ const HomePage = () => {
 		<div>
 			<div>
 				{rovers.map((rvr) => (
-					<button onClick={(e) => handleRover(e)} value={rvr.value}>
+					<button
+						onClick={(e) => handleRover(e)}
+						value={rvr.value}
+						key={rvr.name}>
 						{rvr.name}
 					</button>
 				))}
