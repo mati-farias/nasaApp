@@ -8,12 +8,15 @@ import {
 } from '../../redux/actions';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useParams } from 'react-router-dom';
 
-const Curiosity = () => {
+const Photos = (props) => {
 	const dispatch = useDispatch();
+	console.log(props);
+	const { rover } = useParams();
 
 	useEffect(() => {
-		dispatch(getCuriosityPics(new Date(), 'curiosity'));
+		dispatch(getCuriosityPics(new Date(), rover));
 	}, [dispatch]);
 
 	const curiosityPics = useSelector((state) => state.curiosityData);
@@ -31,7 +34,7 @@ const Curiosity = () => {
 	function handleDate(date) {
 		console.log('handleDate', date);
 		setDate(date);
-		dispatch(getCuriosityPics(date, 'opportunity'));
+		dispatch(getCuriosityPics(date, rover));
 	}
 
 	function handleSetDataType() {
@@ -125,4 +128,4 @@ const Curiosity = () => {
 	);
 };
 
-export default Curiosity;
+export default Photos;

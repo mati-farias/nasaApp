@@ -13,7 +13,7 @@ import {
 const API_KEY = 'api_key=ZobkmkFRuvXxco6luZMkqwAiDQFetVC8cg9IN2MM';
 const API_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers';
 
-export const getCuriosityPics = (date = new Date()) => {
+export const getCuriosityPics = (date = new Date(), rover) => {
 	let earthDate;
 
 	if (date instanceof Date) {
@@ -28,12 +28,12 @@ export const getCuriosityPics = (date = new Date()) => {
 		try {
 			let dateType = date[4] === '-' ? 'earth_date' : 'sol';
 
-			let curiosityPics = await axios.get(
-				`${API_URL}/curiosity/photos?${dateType}=${date}&page=1&${API_KEY}`
+			let roverPics = await axios.get(
+				`${API_URL}/${rover}/photos?${dateType}=${date}&page=1&${API_KEY}`
 			);
 			return dispatch({
 				type: GET_CURIOSITY_PICS,
-				payload: curiosityPics.data,
+				payload: roverPics.data,
 			});
 		} catch (error) {
 			alert(error);

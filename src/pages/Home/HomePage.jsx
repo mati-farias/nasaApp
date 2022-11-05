@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/Spinner/Spinner';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
-	const dispatch = useDispatch();
+	const [rover, setRover] = useState();
+	let navigate = useNavigate();
 
-	const curiosityPics = useSelector((state) => state.curiosityPhotos);
-	const loading = useSelector((state) => state.loading);
+	const handleRover = (e) => {
+		const robotName = e.target.value;
+		setRover(robotName);
+		navigate(`/photos/${robotName}`);
+	};
+
+	const rovers = [
+		{ name: 'Curiosity', value: 'curiosity' },
+		{ name: 'Opportunity', value: 'opportunity' },
+		{ name: 'Spirit', value: 'spirit' },
+	];
+
 	return (
 		<div>
 			<div>
-				<Link to='/curiosity'>Curiosity Rover</Link>
-			</div>
-			<div>
-				<Link to='/opportunity'>Opportunity Rover</Link>
-			</div>
-			<div>
-				<Link to='/spirit'>Spirit Rover</Link>
+				{rovers.map((rvr) => (
+					<button
+						onClick={(e) => handleRover(e)}
+						value={rvr.value}
+						key={rvr.name}>
+						{rvr.name}
+					</button>
+				))}
 			</div>
 		</div>
 	);
