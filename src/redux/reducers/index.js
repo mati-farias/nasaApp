@@ -11,6 +11,7 @@ const initialState = {
 	opportunityPhotos: [],
 	spiritPhotos: [],
 	loading: true,
+	roverData: [],
 };
 
 const rootReducer = (state = initialState, action) => {
