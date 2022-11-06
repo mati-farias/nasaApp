@@ -10,6 +10,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import PhotoList from '../../components/PhotoList/PhotoList';
 import FilterCamera from '../../components/FilterCamera/FilterCamera';
 import { Row, Col, Card, CardGroup, Container, Button } from 'react-bootstrap';
+import backgroundImage from '../../images/marsbackground.jpg';
 
 const Home = (props) => {
 	const dispatch = useDispatch();
@@ -50,7 +51,17 @@ const Home = (props) => {
 	return (
 		<Container
 			fluid
-			style={{ backgroundColor: 'black', minHeight: '100vh' }}>
+			style={{
+				backgroundColor: 'black',
+				backgroundImage: `url(
+					${backgroundImage}
+				)`,
+				minHeight: '100vh',
+				backgroundPosition: 'center',
+				backgroundRepeat: 'no-repeat',
+				backgroundSize: 'cover',
+				backgroundAttachment: 'fixed',
+			}}>
 			<Container
 				style={{
 					minHeight: '10vh',

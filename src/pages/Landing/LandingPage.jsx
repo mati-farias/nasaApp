@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
+import { Row, Col, Card, CardGroup, Container, Button } from 'react-bootstrap';
+import backgroundImage from '../../images/marsbackground.jpg';
 
 const LandingPage = () => {
 	const [rover, setRover] = useState();
@@ -20,18 +22,20 @@ const LandingPage = () => {
 	];
 
 	return (
-		<div>
-			<div>
+		<Container fluid>
+			<Container fluid>
 				<header>
 					<div
 						className='p-5 text-center bg-image'
 						style={{
 							backgroundImage: `url(
-						"https://mars.nasa.gov/layout/mars2020/images/PIA23764-RoverNamePlateonMars-web.jpg"
-					)`,
+								${backgroundImage}
+							)`,
 							minHeight: '100vh',
+							backgroundPosition: 'center',
 							backgroundRepeat: 'no-repeat',
 							backgroundSize: 'cover',
+							backgroundAttachment: 'fixed',
 						}}>
 						<div
 							className='mask'
@@ -42,20 +46,20 @@ const LandingPage = () => {
 								</div>
 								<div>
 									{rovers.map((rvr) => (
-										<button
+										<Button
 											onClick={(e) => handleRover(e)}
 											value={rvr.value}
 											key={rvr.name}>
 											{rvr.name}
-										</button>
+										</Button>
 									))}
 								</div>
 							</div>
 						</div>
 					</div>
 				</header>
-			</div>
-		</div>
+			</Container>
+		</Container>
 	);
 };
 
