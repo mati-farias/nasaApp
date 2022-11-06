@@ -1,0 +1,44 @@
+{
+    "cameras": [
+    {
+        "value": "All",
+        "text": "All"
+    },
+    {
+        "value": "fhaz",
+        "text": "FHAZ"
+    },
+    {
+        "value": "rhaz",
+        "text": "RHAZ"
+    },
+    {
+        "value": "mast",
+        "text": "MAST"
+    },
+    {
+        "value": "chemcam",
+        "text": "CHEMCAM"
+    },
+    {
+        "value": "mahli",
+        "text": "MAHLI"
+    },
+    {
+        "value": "mardi",
+        "text": "MARDI"
+    },
+    {
+        "value": "navcam",
+        "text": "NAVCAM"
+    },
+    {
+        "value": "pancam",
+        "text": "PANCAM"
+    },
+    {
+        "value": "minites",
+        "text": "MINITES"
+    }
+]
+}

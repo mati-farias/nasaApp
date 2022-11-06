@@ -1,11 +1,8 @@
-import {
-	FILTER_BY_CAMERAS_CURIOSITY,
-	GET_ROVERS_PICS,
-} from '../actions/actionTypes';
+import { FILTER_BY_CAMERAS, GET_ROVERS_PICS } from '../actions/actionTypes';
 
 const initialState = {
 	roverData: [],
-	filterCuriosityCameras: [],
+	filterCameras: [],
 	loading: true,
 };
 
@@ -17,16 +14,16 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				roverData: roverPics,
-				filterCuriosityCameras: roverPics,
+				filterCameras: roverPics,
 				loading: false,
 			};
 		}
-		case FILTER_BY_CAMERAS_CURIOSITY: {
-			let filteredByCameras = state.filterCuriosityCameras;
+		case FILTER_BY_CAMERAS: {
+			let filteredByCameras = state.filterCameras;
 			let nameCamera = action.payload;
 			let filteredCameras =
 				nameCamera === 'All'
-					? state.filterCuriosityCameras
+					? state.filterCameras
 					: filterPhotos(nameCamera);
 
 			function filterPhotos(nameCamera) {
