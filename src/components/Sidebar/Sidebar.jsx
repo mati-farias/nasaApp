@@ -25,7 +25,6 @@ function Sidebar(props) {
 
 	function handleSetDataType() {
 		setDateType(!dateType);
-		console.log(typeof roverPics[0]?.earth_date);
 		setDate('');
 	}
 	return (
