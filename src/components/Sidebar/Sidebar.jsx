@@ -30,9 +30,10 @@ function Sidebar(props) {
 	return (
 		<Container
 			style={{
-				minHeight: '100vh',
-				padding: '2rem',
+				minHeight: '50vh',
 				backgroundColor: '#000000AA',
+				position: 'sticky',
+				top: '0',
 			}}>
 			<Col
 				style={{
@@ -90,6 +91,7 @@ function Sidebar(props) {
 					</Button>
 				</Row>
 				<Row>
+					<h5 style={{ color: '#ff52349f' }}>Choose your camera!</h5>
 					<FilterCamera pagination={pagination} />
 				</Row>
 			</Col>

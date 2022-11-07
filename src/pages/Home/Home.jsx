@@ -46,7 +46,9 @@ const Home = (props) => {
 					<Col xs={2}>
 						<Sidebar pagination={pagination} />
 					</Col>
-					<Col xs={10}>
+					<Col
+						xs={10}
+						style={{ flexWrap: 'no-wrap', padding: '2rem' }}>
 						<Col className='d-flex justify-content-center'>
 							<Pagination
 								photosPerPage={photosPerPage}
@@ -55,18 +57,29 @@ const Home = (props) => {
 								currentPage={currentPage}
 							/>
 						</Col>
-						<div>
+						<Col
+							style={{
+								backgroundColor: '000000AA',
+								minHeight: '90vh',
+							}}>
 							{loading ? (
 								<Loader />
 							) : photosToShow.length > 0 ? (
 								<PhotoList photosToShow={photosToShow} />
 							) : (
-								<h2>
+								<h2
+									style={{
+										display: 'flex',
+										justifyContent: 'center',
+										alignItems: 'center',
+										color: '#ff52349f',
+										fontFamily: 'Dancing Script',
+									}}>
 									No photos found. Try another camera or
 									another date!
 								</h2>
 							)}
-						</div>
+						</Col>
 					</Col>
 				</Row>
 			</Container>
