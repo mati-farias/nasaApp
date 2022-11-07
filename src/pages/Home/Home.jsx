@@ -68,7 +68,14 @@ const Home = (props) => {
 					padding: '2rem',
 				}}>
 				<Col>
-					<h1 style={{ justifyContent: 'center' }}>Mars's Rovers!</h1>
+					<h1
+						style={{
+							justifyContent: 'center',
+							color: '#ff52349f',
+							fontFamily: 'Dancing Script',
+						}}>
+						{rover.toUpperCase()}
+					</h1>
 				</Col>
 				<Row>
 					<Col>
@@ -93,7 +100,10 @@ const Home = (props) => {
 									onChange={(e) => setInput(e.target.value)}
 								/>
 								<Button
-									style={{ marginTop: '10px' }}
+									style={{
+										marginTop: '10px',
+										color: '#ff52349f',
+									}}
 									onClick={() => handleDate(input)}>
 									Search
 								</Button>
@@ -104,6 +114,11 @@ const Home = (props) => {
 						<FilterCamera pagination={pagination} />
 					</Col>
 					<Button
+						style={{
+							backgroundColor: '#0000009f',
+							color: '#ff52349f',
+							border: 'none',
+						}}
 						className='w-70 btn btn-primary'
 						type='button'
 						onClick={handleSetDataType}>

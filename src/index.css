@@ -8,3 +8,21 @@ li{
   margin: 0;
   box-sizing: border-box;
 }
+
+
+
+::-webkit-scrollbar {
+    width: 0.8vw; /* THIS WILL RESET THE DEFAULT SCORLLBAR STYLING */
+}
+
+/* TO STYLE THE SCROLLBAR TRACK */
+::-webkit-scrollbar-track {
+    background-color: #000000; /* THIS WILL SET THE COLOR OF THE SCROLLBAR TRACK */
+}
+
+/* TO STYLE THE SCROLLBAR THUMB */
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 0.2vw solid #ff52349f;
+  border-radius: 5vw;
+}

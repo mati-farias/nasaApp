@@ -3,22 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Row, Col, Card, CardGroup, Container, Button } from 'react-bootstrap';
 import backgroundImage from '../../images/marsbackground.jpg';
-
+import { rovers } from '../../utils/rovers.json';
+import Footer from '../../components/Footer/Footer';
 const LandingPage = () => {
 	const [rover, setRover] = useState();
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const handleRover = (e) => {
 		const robotName = e.target.value;
 		setRover(robotName);
 		navigate(`/photos/${robotName}`);
 	};
-
-	const rovers = [
-		{ name: 'Curiosity', value: 'curiosity' },
-		{ name: 'Opportunity', value: 'opportunity' },
-		{ name: 'Spirit', value: 'spirit' },
-	];
 
 	return (
 		<Container
@@ -42,26 +37,49 @@ const LandingPage = () => {
 								width: '400px',
 								height: '200px',
 								position: 'fixed',
-								left: '44%',
+								left: '70%',
 							}}>
 							<Col>
 								<h1
 									style={{
-										color: 'white',
+										color: '#ff52349f',
+										// color: '#FFFFFF',
 										fontSize: '80px',
+										fontFamily: 'Dancing Script',
+										fontWeight: '600',
 									}}>
-									Mars's Rovers!
+									Mars Rovers!
 								</h1>
-								<Col>
-									{rovers.map((rvr) => (
-										<Button
-											onClick={(e) => handleRover(e)}
-											value={rvr.value}
-											key={rvr.name}>
-											{rvr.name}
-										</Button>
-									))}
-								</Col>
+								<Row>
+									<Col
+										style={{
+											display: 'flex',
+											float: '',
+
+											// paddingLeft: '8rem',
+											// marginRight: '5rem',
+											marginTop: '4rem',
+										}}>
+										{rovers.map((rvr) => (
+											<Button
+												style={{
+													backgroundColor:
+														'#ff52349f',
+													color: 'white',
+													borderColor: 'white',
+													marginRight: '1rem',
+													fontSize: '1.5rem',
+													fontFamily:
+														'Dancing Script',
+												}}
+												onClick={(e) => handleRover(e)}
+												value={rvr.value}
+												key={rvr.name}>
+												{rvr.name}
+											</Button>
+										))}
+									</Col>
+								</Row>
 							</Col>
 						</Col>
 					</Col>
