@@ -1,15 +1,12 @@
-import React from 'react';
 import { MDBFooter } from 'mdb-react-ui-kit';
-
+import styled from 'styled-components';
 const Footer = () => {
 	return (
 		<MDBFooter
 			bgColor='dark'
 			color='white'
 			className='text-center text-lg-left'>
-			<div
-				className='text-center p-3'
-				style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+			<Wrapper>
 				Made by:{' '}
 				<a
 					className='text-light'
@@ -17,9 +14,15 @@ const Footer = () => {
 					target='_blank'>
 					Mati Farias
 				</a>
-			</div>
+			</Wrapper>
 		</MDBFooter>
 	);
 };
+
+const Wrapper = styled.div.attrs(() => ({
+	className: 'text-center p-3',
+}))`
+	background-color: rgba(0, 0, 0, 0.2);
+`;
 
 export default Footer;

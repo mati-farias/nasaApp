@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home/Home';
 import LandingPage from './pages/Landing/LandingPage';
-import Photos from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
 import Navigation from './components/Navbar/Navigation';
 
@@ -13,8 +12,7 @@ function App() {
 			<Navigation />
 			<Routes>
 				<Route path='/' element={<LandingPage />} />
-				<Route path='/home' element={<Home />} />
-				<Route path='/photos/:rover' element={<Photos />} />
+				<Route path='/home/:rover' element={<Home />} />
 			</Routes>
 			<Footer />
 		</React.Fragment>

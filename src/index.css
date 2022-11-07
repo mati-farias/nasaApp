@@ -1,3 +1,9 @@
+:root {
+  --color-orange: #ff52349f;
+  --ff-dancing: "Dancing Script";
+  --title-ff: var(--ff-dancing);
+  --base-color: var(--color-orange);
+}
 
 li{
   list-style: none;

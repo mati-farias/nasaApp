@@ -1,19 +1,15 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRoversPics } from '../../redux/actions';
-import DatePicker from 'react-datepicker';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useParams } from 'react-router-dom';
 import Pagination from '../../components/Pagination/Pagination';
 import PhotoList from '../../components/PhotoList/PhotoList';
-import FilterCamera from '../../components/FilterCamera/FilterCamera';
-import { Row, Col, Card, CardGroup, Container, Button } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import backgroundImage from '../../images/marsbackground.jpg';
 import Loader from '../../components/Loader/Loader';
 import Sidebar from '../../components/Sidebar/Sidebar';
-
-const Home = (props) => {
+import styled from 'styled-components';
+const Home = () => {
 	const roverPics = useSelector((state) => state.roverData);
 	const loading = useSelector((state) => state.loading);
 
@@ -57,27 +53,16 @@ const Home = (props) => {
 								currentPage={currentPage}
 							/>
 						</Col>
-						<Col
-							style={{
-								backgroundColor: '000000AA',
-								minHeight: '90vh',
-							}}>
+						<Col>
 							{loading ? (
 								<Loader />
 							) : photosToShow.length > 0 ? (
 								<PhotoList photosToShow={photosToShow} />
 							) : (
-								<h2
-									style={{
-										display: 'flex',
-										justifyContent: 'center',
-										alignItems: 'center',
-										color: '#ff52349f',
-										fontFamily: 'Dancing Script',
-									}}>
+								<NoPhotosTitle>
 									No photos found. Try another camera or
 									another date!
-								</h2>
+								</NoPhotosTitle>
 							)}
 						</Col>
 					</Col>
@@ -86,5 +71,11 @@ const Home = (props) => {
 		</Container>
 	);
 };
-
+const NoPhotosTitle = styled.h2`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--base-color);
+	font-family: var(--title-ff);
+`;
 export default Home;

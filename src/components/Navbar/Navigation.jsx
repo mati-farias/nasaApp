@@ -17,7 +17,7 @@ function Navigation() {
 		const robotName = e.target.value;
 		setRover(robotName);
 		dispatch(getRoversPics(new Date(), robotName));
-		navigate(`/photos/${robotName}`);
+		navigate(`/home/${robotName}`);
 	};
 	return (
 		<>

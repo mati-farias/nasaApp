@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Row, Col, Card, CardGroup, Container, Button } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import backgroundImage from '../../images/marsbackground.jpg';
 import { rovers } from '../../utils/rovers.json';
-import Footer from '../../components/Footer/Footer';
+import styled from 'styled-components';
 const LandingPage = () => {
 	const [rover, setRover] = useState();
 	const navigate = useNavigate();
@@ -12,17 +11,15 @@ const LandingPage = () => {
 	const handleRover = (e) => {
 		const robotName = e.target.value;
 		setRover(robotName);
-		navigate(`/photos/${robotName}`);
+		navigate(`/home/${robotName}`);
 	};
 
 	return (
 		<Container
 			fluid
 			style={{
+				backgroundImage: `url(${backgroundImage})`,
 				backgroundColor: 'black',
-				backgroundImage: `url(
-		${backgroundImage}
-	)`,
 				minHeight: '100vh',
 				backgroundPosition: 'center',
 				backgroundRepeat: 'no-repeat',
@@ -32,69 +29,64 @@ const LandingPage = () => {
 			<Container fluid>
 				<Row>
 					<Col>
-						<Col
-							style={{
-								width: '400px',
-								height: '200px',
-								position: 'fixed',
-								left: '70%',
-							}}>
-							<Col>
-								<h1
+						<RightContent>
+							<Title>Mars Rovers!</Title>
+							<Row>
+								<Col
 									style={{
-										color: '#ff52349f',
-										// color: '#FFFFFF',
-										fontSize: '80px',
-										fontFamily: 'Dancing Script',
-										fontWeight: '600',
+										display: 'flex',
+										float: '',
+										marginTop: '4rem',
 									}}>
-									Mars Rovers!
-								</h1>
-								<Row>
-									<Col
-										style={{
-											display: 'flex',
-											float: '',
-
-											// paddingLeft: '8rem',
-											// marginRight: '5rem',
-											marginTop: '4rem',
-										}}>
-										{rovers.map((rvr) => (
-											<Button
-												style={{
-													backgroundColor:
-														'#ff52349f',
-													color: 'white',
-													borderColor: 'white',
-													marginRight: '1rem',
-													fontSize: '1.5rem',
-													fontFamily:
-														'Dancing Script',
-												}}
-												onClick={(e) => handleRover(e)}
-												value={rvr.value}
-												key={rvr.name}>
-												{rvr.name}
-											</Button>
-										))}
-									</Col>
-								</Row>
-							</Col>
-						</Col>
+									{rovers.map((rvr) => (
+										<RoverExploreBtn
+											onClick={(e) => handleRover(e)}
+											value={rvr.value}
+											key={rvr.name}>
+											{rvr.name}
+										</RoverExploreBtn>
+									))}
+								</Col>
+							</Row>
+						</RightContent>
 					</Col>
 				</Row>
-				<Row
-					style={{
-						backgroundColor: 'blue',
-						display: 'flex',
-						float: 'right',
-						alignItems: 'center',
-					}}
-					className='d-flex justify-content-center'></Row>
 			</Container>
 		</Container>
 	);
 };
+
+const RoverExploreBtn = styled.button.attrs(() => ({
+	className: 'btn btn-primary',
+}))`
+	background-color: var(--base-color);
+	color: white;
+	border-color: white;
+	margin-right: 1rem;
+	font-size: 1.5rem;
+	font-family: var(--title-ff);
+`;
+
+const Title = styled.h1`
+	color: var(--base-color);
+	font-size: 80px;
+	font-family: var(--title-ff);
+	font-weight: 600;
+`;
+const RightContent = styled.div`
+	width: 25rem;
+	height: 12.5rem;
+	float: right;
+	margin-right: 10rem;
+`;
+// const MarsBackground = styled.div`
+// 	background-image: ${(props) => url(props.bgImage)};
+// 	background-color: black;
+// 	min-height: 100vh;
+// 	background-position: center;
+// 	background-repeat: no-repeat;
+// 	background-size: cover;
+// 	background-attachment: fixed;
+// `;
 
 export default LandingPage;
