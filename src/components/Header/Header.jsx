@@ -10,7 +10,9 @@ const Header = () => {
 	)`,
 				backgroundRepeat: 'no-repeat',
 				backgroundSize: 'cover',
-			}}></Container>
+			}}>
+			<h1>Mars's Rovers App</h1>
+		</Container>
 	);
 };
 

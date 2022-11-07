@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/Spinner/Spinner';
 import { getRoversPics } from '../../redux/actions';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -11,6 +10,7 @@ import PhotoList from '../../components/PhotoList/PhotoList';
 import FilterCamera from '../../components/FilterCamera/FilterCamera';
 import { Row, Col, Card, CardGroup, Container, Button } from 'react-bootstrap';
 import backgroundImage from '../../images/marsbackground.jpg';
+import Loader from '../../components/Loader/Loader';
 
 const Home = (props) => {
 	const dispatch = useDispatch();
@@ -67,6 +67,9 @@ const Home = (props) => {
 					minHeight: '10vh',
 					padding: '2rem',
 				}}>
+				<Col>
+					<h1 style={{ justifyContent: 'center' }}>Mars's Rovers!</h1>
+				</Col>
 				<Row>
 					<Col>
 						{dateType ? (
@@ -82,14 +85,16 @@ const Home = (props) => {
 								/>
 							</Col>
 						) : (
-							<Col>
+							<Col style={{ paddingBottom: '170px' }}>
 								<input
 									className='w-100'
 									type='text'
 									value={input}
 									onChange={(e) => setInput(e.target.value)}
 								/>
-								<Button onClick={() => handleDate(input)}>
+								<Button
+									style={{ marginTop: '10px' }}
+									onClick={() => handleDate(input)}>
 									Search
 								</Button>
 							</Col>
@@ -97,13 +102,13 @@ const Home = (props) => {
 					</Col>
 					<Col>
 						<FilterCamera pagination={pagination} />
-						<Button
-							className='w-100 btn btn-primary'
-							type='button'
-							onClick={handleSetDataType}>
-							{dateType ? 'Earth Date' : 'Sol Date'}
-						</Button>
 					</Col>
+					<Button
+						className='w-70 btn btn-primary'
+						type='button'
+						onClick={handleSetDataType}>
+						{dateType ? 'Earth Date' : 'Sol Date'}
+					</Button>
 				</Row>
 			</Container>
 			<Container>
@@ -117,7 +122,7 @@ const Home = (props) => {
 				</Col>
 				<div>
 					{loading ? (
-						<Spinner />
+						<Loader />
 					) : photosToShow.length > 0 ? (
 						<PhotoList photosToShow={photosToShow} />
 					) : (

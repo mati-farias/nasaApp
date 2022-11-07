@@ -12,7 +12,7 @@ const FilterCamera = ({ pagination }) => {
 		pagination(1);
 	};
 	return (
-		<Form.Select className='w-100' onChange={(e) => handleFilterCameras(e)}>
+		<Form.Select className='w-70' onChange={(e) => handleFilterCameras(e)}>
 			{cameras.map((camera, index) => (
 				<option key={index} value={camera.value}>
 					{camera.text}

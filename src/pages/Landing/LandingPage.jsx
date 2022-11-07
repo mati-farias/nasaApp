@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header/Header';
 import { Row, Col, Card, CardGroup, Container, Button } from 'react-bootstrap';
 import backgroundImage from '../../images/marsbackground.jpg';
 
@@ -22,29 +21,38 @@ const LandingPage = () => {
 	];
 
 	return (
-		<Container fluid>
+		<Container
+			fluid
+			style={{
+				backgroundColor: 'black',
+				backgroundImage: `url(
+		${backgroundImage}
+	)`,
+				minHeight: '100vh',
+				backgroundPosition: 'center',
+				backgroundRepeat: 'no-repeat',
+				backgroundSize: 'cover',
+				backgroundAttachment: 'fixed',
+			}}>
 			<Container fluid>
-				<header>
-					<div
-						className='p-5 text-center bg-image'
-						style={{
-							backgroundImage: `url(
-								${backgroundImage}
-							)`,
-							minHeight: '100vh',
-							backgroundPosition: 'center',
-							backgroundRepeat: 'no-repeat',
-							backgroundSize: 'cover',
-							backgroundAttachment: 'fixed',
-						}}>
-						<div
-							className='mask'
-							style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-							<div className='d-flex justify-content-center align-items-center'>
-								<div className='text-white'>
-									<h1 className='mb-3'>Mars Rover</h1>
-								</div>
-								<div>
+				<Row>
+					<Col>
+						<Col
+							style={{
+								width: '400px',
+								height: '200px',
+								position: 'fixed',
+								left: '44%',
+							}}>
+							<Col>
+								<h1
+									style={{
+										color: 'white',
+										fontSize: '80px',
+									}}>
+									Mars's Rovers!
+								</h1>
+								<Col>
 									{rovers.map((rvr) => (
 										<Button
 											onClick={(e) => handleRover(e)}
@@ -53,11 +61,19 @@ const LandingPage = () => {
 											{rvr.name}
 										</Button>
 									))}
-								</div>
-							</div>
-						</div>
-					</div>
-				</header>
+								</Col>
+							</Col>
+						</Col>
+					</Col>
+				</Row>
+				<Row
+					style={{
+						backgroundColor: 'blue',
+						display: 'flex',
+						float: 'right',
+						alignItems: 'center',
+					}}
+					className='d-flex justify-content-center'></Row>
 			</Container>
 		</Container>
 	);
